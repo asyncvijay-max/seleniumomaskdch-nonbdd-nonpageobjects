@@ -3,6 +3,8 @@ package org.nonbdd;
 
 import org.nonbdd.base.BaseTest;
 import org.nonbdd.pages.HomePage;
+import org.nonbdd.pages.StorePage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class OrderTest extends BaseTest {
@@ -12,7 +14,14 @@ public class OrderTest extends BaseTest {
 
         driver.get("https://askomdch.com/");
         HomePage homePage = new HomePage(driver);
-        homePage.navigateToStorePagefromHomePage();
+        StorePage storePage = homePage.navigateToStorePagefromHomePage();
+
+        storePage.enterSearchItem("Blue");
+        storePage.clickOnSearchItemButton();
+
+        Assert.assertEquals(storePage.searchItemResultsExtractedText(),"");
+
+
 
 
 

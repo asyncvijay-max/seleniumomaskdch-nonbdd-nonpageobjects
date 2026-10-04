@@ -21,13 +21,14 @@ public class StorePage extends BasePage {
     private final By searchItemResults= By.cssSelector("#main h1");
 
      // add to cart button
-     private final By addToCartButton = By.cssSelector("[aria-label='Add “Blue Shoes” to your cart']");
+     //private final By addToCartButton = By.cssSelector("[aria-label='Add “Blue Shoes” to your cart']");
 
      // view cart link
     private final By viewCartLink = By.cssSelector("[title='View cart']");
 
 
     //ACTIONS ******************************
+
     public void enterSearchItem(String itemToSearch)
     {
         driver.findElement(searchItemInputBox).sendKeys(itemToSearch);
@@ -44,15 +45,24 @@ public class StorePage extends BasePage {
         return driver.findElement(searchItemResults).getText();
     }
 
-    public void addProducttoTheCart()
+
+    public By getProductNameCart(String productName)
     {
+        return By.cssSelector("[aria-label='Add “"+ productName +"” to your cart']");
+    }
+
+    public void addProducttoTheCart(String productName)
+    {
+        By addToCartButton =  getProductNameCart("Blue Shoes");
         driver.findElement(addToCartButton).click();
     }
 
-     public void clickOnViewCartLink()
+     public CartPage clickOnViewCartLink()
      {
          driver.findElement(By.cssSelector("[title='View cart']")).click();
          //goes to CART page
+
+         return new CartPage(driver);
      }
 
 

@@ -27,10 +27,10 @@ public class CartPage extends BasePage {
     }
 
     //click on checkout btn
-    public void  clickOnCheckOutBtn()
+    public CheckOutPage  clickOnCheckOutBtn()
     {
         driver.findElement(checkoutBtn).click();
 
-        //Goes to checkout Page
+        return new CheckOutPage(driver);
     }
 }

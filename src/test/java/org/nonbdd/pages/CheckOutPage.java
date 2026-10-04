@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CheckOutPage extends BasePage {
+
+
     public CheckOutPage(WebDriver driver) {
         super(driver);
     }
@@ -42,6 +44,7 @@ public class CheckOutPage extends BasePage {
     {
         driver.findElement(billingAddressTxt).sendKeys(billAddress);
     }
+
     public void enterbillingCity(String city)
     {
         driver.findElement(billingCityTxt).sendKeys(city);
@@ -65,11 +68,13 @@ public class CheckOutPage extends BasePage {
         enterEmail(email);
     }
 
-    public void placeOrder()
+    public OrderConfirmationPage placeOrder()
     {
         driver.findElement(placeOrderBtn).click();
 
         //goes to order confirmation page
+
+        return new OrderConfirmationPage(driver);
     }
 
 }

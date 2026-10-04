@@ -18,9 +18,10 @@ public class HomePage extends BasePage {
 
 
     //ACTIONS
-    public void navigateToStorePagefromHomePage()
+    public StorePage navigateToStorePagefromHomePage()
     {
           driver.findElement(storeLink).click();
+          return new StorePage(driver);
 
 
     }
